@@ -19,7 +19,7 @@ class TongchengSpider(scrapy.Spider):
             title = item.xpath('.//div[@class="des"]/h2/a/text()').extract_first()
             link = item.xpath('.//div[@class="des"]/h2/a/@href').extract_first()
             size = item.xpath('.//div[@class="des"]/p[@class="room strongbox"]/text()').extract_first().strip()
-            print(title,link,size)
+            print(title,link,size,1)
 
 
 
