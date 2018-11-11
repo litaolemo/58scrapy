@@ -3,7 +3,7 @@ import scrapy
 from scrapy import Request
 # import sys,io
 # sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='gb18030')
-from ..items import PachongItem
+from redisPro.redisPro.items import RedisproItem
 
 class TongchengSpider(scrapy.Spider):
     name = 'tongcheng'
@@ -34,12 +34,13 @@ class TongchengSpider(scrapy.Spider):
             link = "https:%s" % link
             size = item.xpath('.//div[@class="des"]/p[@class="room strongbox"]/text()').extract_first().strip()
             print(title,link,size)
-            item_meta = PachongItem()
+            item_meta = RedisproItem()
             item_meta["title"] = title
             item_meta["link"] = link
             item_meta["size"] = size
             yield scrapy.Request(url=link,callback=self.pasrseBySecondPage,meta={"item":item_meta})
 
+        #默认爬取2页数据
         if self.page <= 2:
             url = format("https://bj.58.com/chuzu/pn%s/" % self.page)
             self.page += 1
