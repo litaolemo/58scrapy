@@ -11,4 +11,9 @@ import scrapy
 class PachongItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    title = scrapy.Field()
+    link = scrapy.Field()
+    size = scrapy.Field()
+    strongbox = scrapy.Field()
+    phone = scrapy.Field()
+    pay_type = scrapy.Field()

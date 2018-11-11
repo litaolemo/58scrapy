@@ -12,10 +12,12 @@ class PachongPipeline(object):
         self.f = None
 
     def open_spider(self,spider):
-        pass
+        self.f = open("./58租房.txt","w",encoding="utf-8")
 
     def process_item(self, item, spider):
+        self.f.write(item['title'] + ":" + item['link'] + item['size'] + item['strongbox']+item['phone']+item['pay_type']+"\n")
+        self.f.flush()
         return item
 
     def close_spider(self,spider):
-        pass
+        self.f.close()
